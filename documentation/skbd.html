@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1, maximum-scale=5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Stark — Window Manager Tools for macOS</title>
+
+    <link rel="stylesheet" href="/styles/hack.css" />
+    <link rel="stylesheet" href="/styles/dark-grey.css" />
+
+    <style>
+      ul { padding: 0 !important; margin-top: 0 !important; }
+    </style>
+  </head>
+
+  <body class="hack dark-grey">
+    <div class="container">
+      <h1>Documentation for skbd</h1>
+
+      <blockquote>Stark Key Bind Daemon</blockquote>
+
+      <p><strong>skbd</strong> is a daemon service that runs in the background built using <strong>Swift</strong>. <strong>skbd</strong> allows you to bind abitrary keyboard shortcuts to shell commands.</p>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+        <div class="cell -3of12 -top">
+          <ul>
+            <li><a href="#install">Installation</a></li>
+            <li>
+              <a href="#config">Configuration</a>
+              <ul>
+                <li><a href="#modifiers">Modifiers</a></li>
+                <li><a href="#keys">Keys</a></li>
+                <li><a href="#commands">Commands</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cell -9of12">
+          <h2 id="install">Installation</h2>
+
+          <p>The quickest way to get <strong>skbd</strong> installed is using <a href="https://brew.sh">Homebrew</a>.</p>
+
+          <div class="alert alert-info">
+            $ brew install starkwm/formulae/skbd
+          </div>
+
+          <p>When installing with Homebrew, you can use <code>brew services start skbd</code>. This launches and keeps the <strong>skbd</strong> process running.</p>
+
+          <p>You can build from source. This will required the latest <strong>Xcode</strong>.</p>
+
+          <div class="alert alert-info">
+            $ git clone git@github.com:starkwm/skbd.git<br>
+            $ cd skbd<br>
+            $ make
+          </div>
+
+          <p>You will have to create your own Launch Agent <code>.plist</code> to keep running <strong>skbd</strong> in the background.</p>
+
+          <h2 id="config">Configuration</h2>
+
+          <p>The <strong>skbd</strong> configuration file is in <code>~/.config/skbd/skbdrc</code> by default. It can be overriden with the <code>-c/--config</code> flag.</p>
+
+          <p>Key binds are 1 or more modifiers and 1 key, followed by a shell command.</p>
+
+          <div class="alert alert-info">
+            cmd + shift - b: open -a Alacritty
+          </div>
+
+          <p>The above example binds the modifiers <code>cmd</code> and <code>shift</code> with the <code>b</code> key. It will launch the Alacritty terminal.</p>
+
+          <p>Use <code>skbd -r</code> to have <strong>skbd</strong> reload the configuration after making modifications.</p>
+
+          <h3 id="modifiers">Modifiers</h3>
+
+          <p>Below is a list of supported <strong>modifier keys</strong> (and alternative spellings).</p>
+
+          <ul>
+            <li><code>shift</code></li>
+            <li><code>ctrl/control</code></li>
+            <li><code>alt/opt/option</code></li>
+            <li><code>cmd/command</code></li>
+            <li><code>hyper</code> (alias for <code>cmd</code>+<code>opt</code>+<code>shift</code>+<code>ctrl</code>)</li>
+          </ul>
+
+          <h3 id="keys">Keys</h3>
+
+          <p>Below is a list of supported <strong>keys</strong>.</p>
+
+          <ul>
+            <li><code>A</code> to <code>Z</code>, or <code>a</code> to <code>z</code></li>
+            <li><code>0</code> to <code>9</code></li>
+            <li><code>escape</code></li>
+            <li><code>grave</code></li>
+            <li><code>minus</code> or <code>dash</code> or <code>-</code></li>
+            <li><code>equal</code> or <code>equals</code> or <code>=</code></li>
+            <li><code>tab</code></li>
+            <li><code>leftbracket</code> or <code>[</code></li>
+            <li><code>rightbracket</code> or <code>]</code></li>
+            <li><code>capslock</code></li>
+            <li><code>semicolon</code> or <code>;</code></li>
+            <li><code>quote</code> or <code>singlequote</code> or <code>'</code></li>
+            <li><code>slash</code> or <code>&bsol;</code></li>
+            <li><code>return</code></li>
+            <li><code>backtick</code> or <code>`</code></li>
+            <li><code>period</code> or <code>.</code></li>
+            <li><code>comma</code> or <code>.</code></li>
+            <li><code>forwardslash</code> or <code>&sol;</code></li>
+            <li><code>space</code></li>
+            <li><code>up</code></li>
+            <li><code>down</code></li>
+            <li><code>left</code></li>
+            <li><code>right</code></li>
+            <li><code>pageup</code></li>
+            <li><code>pagedown</code></li>
+            <li><code>home</code></li>
+            <li><code>end</code></li>
+            <li><code>delete</code></li>
+            <li><code>f1</code></li>
+            <li><code>f2</code></li>
+            <li><code>f3</code></li>
+            <li><code>f4</code></li>
+            <li><code>f5</code></li>
+            <li><code>f6</code></li>
+            <li><code>f7</code></li>
+            <li><code>f8</code></li>
+            <li><code>f9</code></li>
+            <li><code>f10</code></li>
+            <li><code>f11</code></li>
+            <li><code>f12</code></li>
+            <li><code>f13</code></li>
+            <li><code>f14</code></li>
+            <li><code>f15</code></li>
+            <li><code>f16</code></li>
+            <li><code>f17</code></li>
+            <li><code>f18</code></li>
+            <li><code>f19</code></li>
+            <li><code>f20</code></li>
+          </ul>
+
+          <h3 id="commands">Commands</h3>
+
+          <p>The shell specified in the <code>$SHELL</code> environment variable executes the commands. It will fallback to <code>/bin/bash</code> if not set.</p>
+
+          <div class="alert alert-warning">
+            Currently the command will not use your shell configuration. You may need to use full paths for binaries that do not appear in the default path environment variable. We are looking into a way to solve this in a future release.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
