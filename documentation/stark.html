@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1, maximum-scale=5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Stark — Window Manager Tools for macOS</title>
+
+    <link rel="stylesheet" href="/styles/hack.css" />
+    <link rel="stylesheet" href="/styles/dark-grey.css" />
+    <link rel="stylesheet" href="/styles/app.css" />
+  </head>
+
+  <body class="hack dark-grey">
+    <div class="container">
+      <h1>Documentation for Stark</h1>
+
+      <blockquote>Power your window management with JavaScript</blockquote>
+
+      <p><strong>Stark</strong> is a macOS window manager built using <strong>Swift</strong>. It utilises the <a href="https://developer.apple.com/documentation/javascriptcore/">JavaScriptCore framework</a>. <strong>Stark</strong> exposes JavaScript objects that form the API for building your configuration. <strong>Stark</strong> sits in the menu bar out of the way, running in the background.</p>
+    </div>
+
+    <div class="container">
+      <div class="grid">
+        <div class="cell -4of12 -top">
+          <ul>
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#config">Configuration</a></li>
+            <li>
+              <a href="#api">API</a>
+              <ul>
+                <li>
+                  <a href="#api-stark">Stark</a>
+                  <ul>
+                    <li><a href="#stark-log">.log</a></li>
+                    <li><a href="#stark-reload">.reload</a></li>
+                    <li><a href="#stark-log">.run</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-app">App</a>
+                  <ul>
+                    <li><a href="#app-find">.find</a></li>
+                    <li><a href="#app-all">.all</a></li>
+                    <li><a href="#app-focused">.focused</a></li>
+                    <li><a href="#app-windows">#windows</a></li>
+                    <li><a href="#app-activate">#activate</a></li>
+                    <li><a href="#app-focus">#focus</a></li>
+                    <li><a href="#app-show">#show</a></li>
+                    <li><a href="#app-hide">#hide</a></li>
+                    <li><a href="#app-terminate">#terminate</a></li>
+                    <li><a href="#app-name">#name</a></li>
+                    <li><a href="#app-bundleid">#bundleId</a></li>
+                    <li><a href="#app-processid">#processId</a></li>
+                    <li><a href="#app-isactive">#isActive</a></li>
+                    <li><a href="#app-ishidden">#isHidden</a></li>
+                    <li><a href="#app-isterminated">#isTerminated</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-window">Window</a>
+                  <ul>
+                    <li><a href="#window-all">.all</a></li>
+                    <li><a href="#window-focused">.focused</a></li>
+                    <li><a href="#window-setframe">#setFrame</a></li>
+                    <li><a href="#window-settopleft">#setTopLeft</a></li>
+                    <li><a href="#window-setsize">#setSize</a></li>
+                    <li><a href="#window-maximize">#maximize</a></li>
+                    <li><a href="#window-minimize">#minimize</a></li>
+                    <li><a href="#window-unminimize">#unminimize</a></li>
+                    <li><a href="#window-focus">#focus</a></li>
+                    <li><a href="#window-spaces">#spaces</a></li>
+                    <li><a href="#window-app">#app</a></li>
+                    <li><a href="#window-screen">#screen</a></li>
+                    <li><a href="#window-tltle">#title</a></li>
+                    <li><a href="#window-frame">#frame</a></li>
+                    <li><a href="#window-topleft">#topLeft</a></li>
+                    <li><a href="#window-size">#size</a></li>
+                    <li><a href="#window-isstandard">#isStandard</a></li>
+                    <li><a href="#window-ismain">#isMain</a></li>
+                    <li><a href="#window-isfullscreen">#isFullscreen</a></li>
+                    <li><a href="#window-isminimized">#isMinimized</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-screen">Screen</a>
+                  <ul>
+                    <li><a href="#screen-all">.all</a></li>
+                    <li><a href="#screen-focused">.focused</a></li>
+                    <li><a href="#screen-currentspace">#currentSpace</a></li>
+                    <li><a href="#screen-spaces">#spaces</a></li>
+                    <li><a href="#screen-identifier">#identifier</a></li>
+                    <li><a href="#screen-frameincludingdockandmenu">#frameIncludingDockAndMenu</a></li>
+                    <li><a href="#screen-framewithoutdockormenu">#frameWithoutDockOrMenu</a></li>
+                    <li><a href="#screen-next">#next</a></li>
+                    <li><a href="#screen-previous">#previous</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-space">Space</a>
+                  <ul>
+                    <li><a href="#space-all">.all</a></li>
+                    <li><a href="#space-active">.active</a></li>
+                    <li><a href="#space-screens">#screens</a></li>
+                    <li><a href="#space-windows">#windows</a></li>
+                    <li><a href="#space-addwindows">#addWindows</a></li>
+                    <li><a href="#space-removewindows">#removeWindows</a></li>
+                    <li><a href="#space-movewindows">#moveWindows</a></li>
+                    <li><a href="#space-identifier">#identifier</a></li>
+                    <li><a href="#space-isnormal">#isNormal</a></li>
+                    <li><a href="#space-isfullscreen">#isFullscreen</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-bind">Bind</a>
+                  <ul>
+                    <li><a href="#bind-on">.on</a></li>
+                    <li><a href="#bind-off">.off</a></li>
+                    <li><a href="#bind-enable">#enable</a></li>
+                    <li><a href="#bind-disable">#disable</a></li>
+                    <li><a href="#bind-id">#id</a></li>
+                    <li><a href="#bind-key">#key</a></li>
+                    <li><a href="#bind-modifiers">#modifiers</a></li>
+                    <li><a href="#bind-isenabled">#isEnabled</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-task">Task</a>
+                  <ul>
+                    <li><a href="#task-run">.run</a></li>
+                    <li><a href="#task-terminate">.terminate</a></li>
+                    <li><a href="#task-terminate">#terminate</a></li>
+                    <li><a href="#task-id">#id</a></li>
+                    <li><a href="#task-status">#status</a></li>
+                    <li><a href="#task-stdio">#standardOutput</a></li>
+                    <li><a href="#task-stderr">#standardError</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#api-timer">Timer</a>
+                  <ul>
+                    <li><a href="#timer-after">.after</a></li>
+                    <li><a href="#timer-every">.every</a></li>
+                    <li><a href="#timer-off">.off</a></li>
+                    <li><a href="#timer-id">#id</a></li>
+                    <li><a href="#timer-cleartimeout">clearTimeout</a></li>
+                    <li><a href="#timer-clearinterval">clearInterval</a></li>
+                    <li><a href="#timer-settimeout">setTimeout</a></li>
+                    <li><a href="#timer-setinterval">setInterval</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cell -8of12">
+          <h2 id="install">Installation</h2>
+
+          <p>The quickest way to get <strong>stark</strong> installed is using <a href="https://brew.sh">Homebrew</a>.</p>
+
+          <div class="alert alert-info">
+            $ brew install starkwm/formulae/stark
+          </div>
+
+          <h2 id="config">Configuration</h2>
+
+          <p>The <strong>stark</strong> configuration file is in <code>~/.config/stark/stark.js</code>.</p>
+
+          <h2 id="api">API</h2>
+
+          <h3 id="api-stark">Stark</h3>
+
+          <h3 id="api-app">App</h3>
+
+          <h3 id="api-window">Window</h3>
+
+          <h3 id="api-screen">Screen</h3>
+
+          <h3 id="api-space">Space</h3>
+
+          <h3 id="api-bind">Bind</h3>
+
+          <h3 id="api-task">Task</h3>
+
+          <h3 id="api-timer">Timer</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
